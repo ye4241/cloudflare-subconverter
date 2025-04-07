@@ -1,3 +1,8 @@
+export function getDefaultBackend(request: Request, env: Env): string {
+    const { origin } = new URL(request.url);
+    return env.DEFAULT_BACKEND ?? origin;
+}
+
 export function getBackendConfig(request: Request, env: Env): { label: string; value: string }[] {
     const { origin } = new URL(request.url);
     const envConfigArr = env.BACKEND?.split('\n').filter(Boolean) ?? [];
@@ -19,3 +24,4 @@ export function getBackendConfig(request: Request, env: Env): { label: string; v
         ]
     );
 }
+

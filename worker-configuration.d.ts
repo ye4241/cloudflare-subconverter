@@ -3,8 +3,10 @@
 
 interface Env {
     BACKEND?: string;
+    DEFAULT_BACKEND?: string;
     LOCK_BACKEND?: boolean;
     REMOTE_CONFIG?: string;
     CHUNK_COUNT?: string;
     DB?: D1Database;
 }
+

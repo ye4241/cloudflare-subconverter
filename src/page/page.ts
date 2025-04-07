@@ -1,5 +1,6 @@
 import { SubButton, SubCheckbox, SubForm, SubFormItem, SubInput, SubMessage, SubMultiSelect, SubSelect, SubTextarea } from './components';
 import { getAdvancedConfig, getBackendConfig, getProtocolConfig, getRemoteConfig, getShortServeConfig, getTargetConfig } from './config';
+import { getDefaultBackend } from './config/backendConfig';
 import { theme } from './script/theme';
 import { layout } from './style/layout';
 import { style } from './style/style';
@@ -11,6 +12,7 @@ export function showPage(request: Request, env: Env): Response {
     const targetConfig = getTargetConfig();
     const advancedConfig = getAdvancedConfig();
     const protocolConfig = getProtocolConfig();
+    const defaultBackend = getDefaultBackend(request, env);
 
     const hasDBConfig = env.DB !== undefined;
 
@@ -220,7 +222,7 @@ export function showPage(request: Request, env: Env): Response {
                         #model = {
                             target: '${targetConfig[0].value}',
                             config: '${remoteConfig[0].value}',
-                            backend: '${backendConfig[0].value}',
+                            backend: '${defaultBackend}',
                             protocol: '${JSON.stringify(protocolConfig.map(item => item.value))}',
                             advanced: ['emoji', 'new_name'],
                             shortServe: '${shortServeConfig[0]?.value ?? ''}',

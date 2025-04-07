@@ -42,16 +42,16 @@ export function SubTextarea(): string {
                         background-image: none;
                         border: 1px solid var(--border-color);
                         border-radius: var(--radius);
-                        transition: var(--transition);
+                        transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
                         font-family: inherit;
+                    }
+                    .sub-textarea__inner:hover {
+                        border-color: var(--border-hover);
                     }
                     .sub-textarea__inner:focus {
                         outline: none;
                         border-color: var(--primary-color);
                         box-shadow: 0 0 0 2px var(--shadow);
-                    }
-                    .sub-textarea__inner:hover {
-                        border-color: var(--border-hover);
                     }
                     .sub-textarea__inner::placeholder {
                         color: var(--text-secondary);
