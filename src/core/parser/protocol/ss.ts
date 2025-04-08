@@ -62,20 +62,17 @@ export class SsParser extends Faker {
         this.#confuseConfig.hostname = this.getHostName();
         this.#confuseConfig.port = this.getPort();
         this.#confuseConfig.hash = PsUtil.setPs(this.#originPs, this.#confusePs);
-        this.#confuseLink = this.#confuseConfig.href!;
+        this.#confuseLink = `ss://${this.#originConfig.username}@${this.#confuseConfig.host}:${this.#confuseConfig.port}${this.#confuseConfig.search}#${this.#confuseConfig.hash}`;
     }
 
     public restoreClash(proxy: Record<string, string | number>, ps: string): Record<string, string | number> {
         proxy.name = ps;
         proxy.server = this.originConfig.hostname ?? '';
         proxy.port = Number(this.originConfig?.port ?? 0);
-        // proxy.cipher = this.#parseConfig.originEncryptionProtocol!;
-        // proxy.password = this.#parseConfig.originPassword!;
         return proxy;
     }
 
     public restoreSingbox(outbound: Record<string, string | number>, ps: string): Record<string, string | number> {
-        // outbound.password = this.#parseConfig.originPassword!;
         outbound.server = this.originConfig.hostname ?? '';
         outbound.server_port = Number(this.originConfig.port ?? 0);
         outbound.tag = ps;
@@ -128,3 +125,4 @@ export class SsParser extends Faker {
         return this.#confuseConfig;
     }
 }
+
