@@ -70,6 +70,12 @@ export class Hysteria2Parser extends Faker {
         proxy.server = this.originConfig.hostname ?? '';
         proxy.port = Number(this.originConfig.port ?? 0);
         proxy.password = this.originConfig?.username ?? '';
+        if (proxy.down) {
+            proxy.down = decodeURIComponent(proxy.down as string);
+        }
+        if (proxy.up) {
+            proxy.up = decodeURIComponent(proxy.up as string);
+        }
         return proxy;
     }
 
@@ -78,6 +84,12 @@ export class Hysteria2Parser extends Faker {
         outbound.server = this.originConfig.hostname ?? '';
         outbound.server_port = Number(this.originConfig.port ?? 0);
         outbound.tag = ps;
+        if (outbound.down) {
+            outbound.down = decodeURIComponent(outbound.down as string);
+        }
+        if (outbound.up) {
+            outbound.up = decodeURIComponent(outbound.up as string);
+        }
         return outbound;
     }
 
@@ -127,3 +139,4 @@ export class Hysteria2Parser extends Faker {
         return this.#confuseConfig;
     }
 }
+

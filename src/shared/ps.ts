@@ -19,7 +19,13 @@ export class PsUtil {
      * @returns {string} origin^LINK_TO^confuse
      */
     public static setPs(name: string, ps: string): string {
-        return [name, ps].join(PsUtil.#LINK_KEY);
+        return [this.formatPs(name), ps].join(PsUtil.#LINK_KEY);
+    }
+
+    public static formatPs(ps?: string): string {
+        if (!ps) return crypto.randomUUID();
+
+        return ps.replace(/\|/g, '-');
     }
 
     /**
@@ -52,3 +58,4 @@ export class PsUtil {
         this.#PREFIX_CACHE.clear();
     }
 }
+

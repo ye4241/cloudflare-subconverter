@@ -37,7 +37,7 @@ export class TrojanParser extends Faker {
     private setOriginConfig(v: string): void {
         this.#originLink = v;
         this.#originConfig = new URL(v);
-        this.#originPs = this.#originConfig.hash ?? '';
+        this.#originPs = PsUtil.formatPs(this.#originConfig.hash) ?? '';
     }
 
     /**
@@ -45,8 +45,8 @@ export class TrojanParser extends Faker {
      * @param {string} ps
      */
     public updateOriginConfig(ps: string): void {
-        this.#originConfig.hash = ps;
-        this.#originPs = ps;
+        this.#originConfig.hash = PsUtil.formatPs(ps);
+        this.#originPs = PsUtil.formatPs(ps);
         this.#originLink = this.#originConfig.href!;
         this.setConfuseConfig(this.#originLink);
     }
