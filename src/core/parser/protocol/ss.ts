@@ -62,7 +62,7 @@ export class SsParser extends Faker {
         this.#confuseConfig.hostname = this.getHostName();
         this.#confuseConfig.port = this.getPort();
         this.#confuseConfig.hash = PsUtil.setPs(this.#originPs, this.#confusePs);
-        this.#confuseLink = `ss://${this.#originConfig.username}@${this.#confuseConfig.host}:${this.#confuseConfig.port}${this.#confuseConfig.search}#${this.#confuseConfig.hash}`;
+        this.#confuseLink = `ss://${decodeURIComponent(this.#originConfig.username!)}@${this.#confuseConfig.host}:${this.#confuseConfig.port}${this.#confuseConfig.search}#${this.#confuseConfig.hash}`;
     }
 
     public restoreClash(proxy: Record<string, string | number>, ps: string): Record<string, string | number> {
