@@ -8,6 +8,7 @@ import { SsParser } from './protocol/ss';
 import { TrojanParser } from './protocol/trojan';
 import { VlessParser } from './protocol/vless';
 import { VmessParser } from './protocol/vmess';
+import { getYamlProxies } from './yaml';
 
 export * from './protocol/hysteria2';
 export * from './protocol/ss';
@@ -56,9 +57,20 @@ export class Parser extends Convert {
             if (v.startsWith('https://') || v.startsWith('http://')) {
                 const subContent = await fetchWithRetry(v, { retries: 3 }).then(r => r.data.text());
                 const { subType, content } = this.getSubType(subContent);
-                if (subType === 'base64' && subContent) {
+
+                if (subType === 'base64' && content) {
                     this.updateExist(Array.from(this.originUrls));
                     await this.parse(content.split('\n').filter(Boolean));
+                }
+
+                if (subType === 'yaml' && content) {
+                    const proxies = content.proxies;
+                    if (proxies.length) {
+                        this.updateExist(Array.from(this.originUrls));
+                        const vps = getYamlProxies(proxies);
+                        console.log('vps', vps);
+                        await this.parse(vps.filter(Boolean));
+                    }
                 }
             }
         }
@@ -72,7 +84,7 @@ export class Parser extends Convert {
 
     private getSubType(content: string): {
         subType: SubType;
-        content: string;
+        content: any;
     } {
         try {
             const subContent = base64Decode(content);
@@ -82,7 +94,7 @@ export class Parser extends Convert {
             };
         } catch {
             try {
-                const subContent = load(content) as string;
+                const subContent = load(content);
                 return {
                     subType: 'yaml',
                     content: subContent

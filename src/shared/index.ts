@@ -19,3 +19,4 @@ export function getUrlGroup(urls: string[], chunkCount: number = 10): string[] {
     }
     return urlGroup;
 }
+
