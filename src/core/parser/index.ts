@@ -68,7 +68,6 @@ export class Parser extends Convert {
                     if (proxies.length) {
                         this.updateExist(Array.from(this.originUrls));
                         const vps = getYamlProxies(proxies);
-                        console.log('vps', vps);
                         await this.parse(vps.filter(Boolean));
                     }
                 }
