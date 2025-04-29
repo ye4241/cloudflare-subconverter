@@ -275,6 +275,9 @@ export function SubSelect(): string {
                 });
 
                 const toggleDropdown = () => {
+                    const isDisabled = this.getAttribute('disabled');
+                    if(isDisabled === 'true') return;
+
                     if (this.state.isOpen) {
                         closeDropdown();
                         if (this.hasAttribute('filterable')) {

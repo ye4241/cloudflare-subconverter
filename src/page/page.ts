@@ -97,7 +97,7 @@ export function showPage(request: Request, env: Env): Response {
                             <sub-form-item label="订阅链接">
                                 <sub-textarea
                                     key="url"
-                                    placeholder="支持各种订阅链接或单节点链接，多个链接每行一个或用 | 分隔"
+                                    placeholder="支持yml/yaml订阅格式，base64订阅格式链接或单节点链接，多个链接每行一个或用 | 分隔"
                                     rows="4"
                                 ></sub-textarea>
                             </sub-form-item>
@@ -261,7 +261,6 @@ export function showPage(request: Request, env: Env): Response {
                                         formItem.setAttribute('disabled', 'true');
                                     }
 
-                                    formItem.setAttribute('placeholder', formConfig[formItemKey]?.placeholder ?? '');
                                     if (formConfig[formItemKey]?.disabled) {
                                         formItem.setAttribute('disabled', '');
                                     }
@@ -413,16 +412,14 @@ export function showPage(request: Request, env: Env): Response {
                     const sub = new Sub();
 
                 </script>
-
-        
-
             </body>
         </html>
     `;
 
     return new Response(html, {
         headers: new Headers({
-            'Content-Type': 'text/html; charset=UTF-8'
+            'Content-Type': 'text/html; charset=UTF-8',
+            'Cache-Control': 'no-store, no-cache, must-revalidate',
         })
     });
 }
