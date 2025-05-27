@@ -1,6 +1,12 @@
 # sub-convert
 
-一个防止节点泄漏的订阅转换小工具
+一个防止节点泄漏的订阅转换小工具 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/jwyGithub/sub-convert)
+
+<p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/jwyGithub/sub-convert/release.yml" alt='status'>
+  <img src="https://img.shields.io/github/issues/jwyGithub/sub-convert" alt='issues'>
+  <img src="https://img.shields.io/github/license/jwyGithub/sub-convert" alt='license'>
+</p>
 
 ## ✨ 功能特点
 
@@ -15,11 +21,11 @@
 | VLESS        | ✅   | 完全支持 | 完全支持 | 已测试   |
 | VMess        | ✅   | 完全支持 | 完全支持 | 已测试   |
 | Trojan       | ✅   | 完全支持 | 完全支持 | 已测试   |
-| Shadowsocks  | ✅   | 完全支持 | 完全支持 | `未测试` |
-| ShadowsocksR | ✅   | 完全支持 | 完全支持 | `未测试` |
-| Hysteria     | ✅   | 完全支持 | 完全支持 | `未测试` |
-| Hysteria2    | ✅   | 完全支持 | 完全支持 | `未测试` |
-| HY2          | ✅   | 完全支持 | 完全支持 | `未测试` |
+| Shadowsocks  | ✅   | 完全支持 | 完全支持 | 已测试   |
+| ShadowsocksR | ✅   | 完全支持 | 完全支持 | 已测试   |
+| Hysteria     | ✅   | 完全支持 | 完全支持 | 已测试   |
+| Hysteria2    | ✅   | 完全支持 | 完全支持 | 已测试   |
+| HY2          | ✅   | 完全支持 | 完全支持 | 已测试   |
 
 ### 📦 订阅格式转换支持
 
